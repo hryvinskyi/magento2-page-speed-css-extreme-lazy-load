@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2022. All rights reserved.
+  ~ @author: Volodymyr Hryvinskyi <mailto:volodymyr@hryvinskyi.com>
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Hryvinskyi\PageSpeedCssExtremeLazyLoad\Api\ConfigInterface"
+                type="Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\Config"/>
+    <preference for="Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\CanCssLazyLoadingInterface"
+                type="Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\CanCssLazyLoading"/>
+
+    <type name="Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\CanCssLazyLoading">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="attribute" xsi:type="object">Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\Validator\Attribute</item>
+                <item name="deferred" xsi:type="object">Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\Validator\Deferred</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
