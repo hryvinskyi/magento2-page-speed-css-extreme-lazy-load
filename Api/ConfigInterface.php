@@ -26,6 +26,14 @@ interface ConfigInterface
      *
      * @return bool
      */
+    public function isOnlyDeferred($scopeCode = null, string $scopeType = ScopeInterface::SCOPE_STORE): bool;
+
+    /**
+     * @param mixed $scopeCode
+     * @param string $scopeType
+     *
+     * @return bool
+     */
     public function isTimeOutEnabled($scopeCode = null, string $scopeType = ScopeInterface::SCOPE_STORE): bool;
 
     /**

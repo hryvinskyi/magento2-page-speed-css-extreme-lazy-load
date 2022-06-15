@@ -11,8 +11,9 @@
             <css>
                 <extreme_lazy_load>
                     <enabled>1</enabled>
+                    <only_deferred>0</only_deferred>
                     <enabled_timeout>1</enabled_timeout>
-                    <timeout>50</timeout>
+                    <timeout>50000</timeout>
                     <delay_events>scroll,mousemove,touchstart</delay_events>
                 </extreme_lazy_load>
             </css>

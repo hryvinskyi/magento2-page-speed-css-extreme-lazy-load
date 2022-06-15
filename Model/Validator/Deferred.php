@@ -9,18 +9,31 @@ declare(strict_types=1);
 namespace Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\Validator;
 
 use Hryvinskyi\PageSpeedApi\Api\Finder\Result\TagInterface;
+use Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\Config;
 use Hryvinskyi\PageSpeedCssExtremeLazyLoad\Model\ValidatorInterface;
 
 class Deferred implements ValidatorInterface
 {
-    public const IGNORE_ATTRIBUTE = 'deferred';
+    public const DEFERRED = 'deferred';
+    public const DEFER = 'defer';
+    private Config $config;
+
+    public function __construct(Config $config)
+    {
+        $this->config = $config;
+    }
 
     /**
      * @inheritDoc
      */
     public function validate(TagInterface $style): bool
     {
-        return isset($style->getAttributes()[self::IGNORE_ATTRIBUTE])
-            && $style->getAttributes()[self::IGNORE_ATTRIBUTE] === 'true';
+        if ($this->config->isOnlyDeferred()) {
+            $isDeferred = isset($style->getAttributes()[self::DEFERRED]) && $style->getAttributes()[self::DEFERRED] === 'true';
+            $isDefer = isset($style->getAttributes()[self::DEFER]);
+            return $isDefer || $isDeferred;
+        }
+
+        return true;
     }
 }

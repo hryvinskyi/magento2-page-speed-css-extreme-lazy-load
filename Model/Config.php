@@ -18,6 +18,7 @@ class Config implements ConfigInterface
      * Configuration paths
      */
     public const XML_CONF_ENABLED = 'hryvinskyi_pagespeed/css/extreme_lazy_load/enabled';
+    public const XML_CONF_ONLY_DEFERRED = 'hryvinskyi_pagespeed/css/extreme_lazy_load/only_deferred';
     public const XML_CONF_ENABLED_TIMEOUT = 'hryvinskyi_pagespeed/css/extreme_lazy_load/enabled_timeout';
     public const XML_CONF_TIMEOUT = 'hryvinskyi_pagespeed/css/extreme_lazy_load/timeout';
     public const XML_CONF_DELAY_EVENTS = 'hryvinskyi_pagespeed/css/extreme_lazy_load/delay_events';
@@ -39,6 +40,14 @@ class Config implements ConfigInterface
     public function isEnabled($scopeCode = null, string $scopeType = ScopeInterface::SCOPE_STORE): bool
     {
         return $this->scopeConfig->isSetFlag(self::XML_CONF_ENABLED, $scopeType, $scopeCode);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function isOnlyDeferred($scopeCode = null, string $scopeType = ScopeInterface::SCOPE_STORE): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::XML_CONF_ONLY_DEFERRED, $scopeType, $scopeCode);
     }
 
     /**
