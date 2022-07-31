@@ -56,4 +56,20 @@ interface ConfigInterface
      * @return array
      */
     public function getExcludeByAttributes($scopeCode = null, string $scopeType = ScopeInterface::SCOPE_STORE): array;
+
+    /**
+     * @param mixed $scopeCode
+     * @param string $scopeType
+     *
+     * @return bool
+     */
+    public function isApplyForPageTypes($scopeCode = null, string $scopeType = ScopeInterface::SCOPE_STORE): bool;
+
+    /**
+     * @param mixed $scopeCode
+     * @param string $scopeType
+     *
+     * @return array
+     */
+    public function getApplyForPageTypes($scopeCode = null, string $scopeType = ScopeInterface::SCOPE_STORE): array;
 }
